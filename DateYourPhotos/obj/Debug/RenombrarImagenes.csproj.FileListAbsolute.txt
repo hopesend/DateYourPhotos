@@ -1,0 +1,9 @@
+c:\users\hopesend\documents\visual studio 2013\Projects\RenombrarImagenes\RenombrarImagenes\bin\Debug\RenombrarImagenes.exe.config
+c:\users\hopesend\documents\visual studio 2013\Projects\RenombrarImagenes\RenombrarImagenes\bin\Debug\RenombrarImagenes.exe
+c:\users\hopesend\documents\visual studio 2013\Projects\RenombrarImagenes\RenombrarImagenes\bin\Debug\RenombrarImagenes.pdb
+c:\users\hopesend\documents\visual studio 2013\Projects\RenombrarImagenes\RenombrarImagenes\obj\Debug\RenombrarImagenes.csprojResolveAssemblyReference.cache
+c:\users\hopesend\documents\visual studio 2013\Projects\RenombrarImagenes\RenombrarImagenes\obj\Debug\RenombrarImagenes.fmRenombrarImagenes.resources
+c:\users\hopesend\documents\visual studio 2013\Projects\RenombrarImagenes\RenombrarImagenes\obj\Debug\RenombrarImagenes.Properties.Resources.resources
+c:\users\hopesend\documents\visual studio 2013\Projects\RenombrarImagenes\RenombrarImagenes\obj\Debug\RenombrarImagenes.csproj.GenerateResource.Cache
+c:\users\hopesend\documents\visual studio 2013\Projects\RenombrarImagenes\RenombrarImagenes\obj\Debug\RenombrarImagenes.exe
+c:\users\hopesend\documents\visual studio 2013\Projects\RenombrarImagenes\RenombrarImagenes\obj\Debug\RenombrarImagenes.pdb
