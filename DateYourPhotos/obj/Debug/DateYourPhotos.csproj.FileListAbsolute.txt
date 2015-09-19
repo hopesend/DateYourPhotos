@@ -7,3 +7,12 @@ C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourP
 C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\obj\Debug\DateYourPhotos.csproj.GenerateResource.Cache
 C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\obj\Debug\DateYourPhotos.exe
 C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\obj\Debug\DateYourPhotos.pdb
+C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\DateYourPhotos\bin\Debug\DateYourPhotos.exe.config
+C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\DateYourPhotos\obj\Debug\DateYourPhotos.exe
+C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\DateYourPhotos\obj\Debug\DateYourPhotos.pdb
+C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\DateYourPhotos\bin\Debug\DateYourPhotos.exe
+C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\DateYourPhotos\bin\Debug\DateYourPhotos.pdb
+C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\DateYourPhotos\obj\Debug\DateYourPhotos.csprojResolveAssemblyReference.cache
+C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\DateYourPhotos\obj\Debug\DateYourPhotos.fmDateYourPhotos.resources
+C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\DateYourPhotos\obj\Debug\DateYourPhotos.Properties.Resources.resources
+C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\DateYourPhotos\obj\Debug\DateYourPhotos.csproj.GenerateResource.Cache
