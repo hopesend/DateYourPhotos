@@ -10,11 +10,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
+using Shell32;
+using System.Globalization;
 
 namespace DateYourPhotos
 {
     public partial class fmDateYourPhotos : Form
     {
+        private const string IMAGEEXTENSION = "*.jpg,*.gif,*.png,*.bmp,*.jpe,*.jpeg,*.tif,*.tiff";
+        private const string VIDEOEXTENSION = "*.avi,*.mp4,*.mpg,*.mpeg";
         public fmDateYourPhotos()
         {
             InitializeComponent();
@@ -36,11 +40,13 @@ namespace DateYourPhotos
 
         private void Renombrar_Imagenes(string pathImagenes)
         {
-            foreach(string archivo in Directory.GetFiles(pathImagenes))
+            string extensiones = IMAGEEXTENSION + "," + VIDEOEXTENSION;
+            foreach (string archivo in Directory.GetFiles(pathImagenes, "*.*", SearchOption.AllDirectories).Where(s => extensiones.Contains(Path.GetExtension(s).ToLower())))
             {
                 ListViewItem nuevoItem = new ListViewItem();
                 string extension = Path.GetExtension(archivo);
-                string nuevaFecha = Reformatear_Fecha(Obtener_Fecha(archivo)) + extension;
+                string fechaCaptura = new ShellFileInfo().GetFileDetails(Path.GetDirectoryName(archivo), Path.GetFileName(archivo), ShellFileInfo.infoFile.Fecha_de_captura);
+                string nuevaFecha = Reformatear_Fecha(Obtener_Fecha(fechaCaptura)) + extension;
 
                 if (Path.GetFileNameWithoutExtension(nuevaFecha) == string.Empty)
                     nuevaFecha = Path.GetFileNameWithoutExtension(archivo) + "(SinFechaQueMostrar)" + extension;
@@ -60,16 +66,24 @@ namespace DateYourPhotos
             }
         }
 
-        private DateTime Obtener_Fecha(string pathImagen)
+        /*private DateTime Obtener_Fecha(string pathImagen)
         {
             Regex r = new Regex(":");
             Image imagenAux = null;
          
             try
             {
+                string dateTaken = null;
                 imagenAux = Image.FromFile(pathImagen);
-                PropertyItem propiedadFechaCaptura = imagenAux.GetPropertyItem(36867);
-                string dateTaken = r.Replace(Encoding.UTF8.GetString(propiedadFechaCaptura.Value), "-", 2);
+                if (IsImage(pathImagen))
+                {
+                    PropertyItem propiedadFechaCaptura = imagenAux.GetPropertyItem(36867);
+                    dateTaken = r.Replace(Encoding.UTF8.GetString(propiedadFechaCaptura.Value), "-", 2);
+                }
+                else
+                {
+
+                }
                 imagenAux.Dispose();
                 return DateTime.Parse(dateTaken);
             }
@@ -79,29 +93,29 @@ namespace DateYourPhotos
                     imagenAux.Dispose();
                 return DateTime.MinValue;
             }
-        }
+        }*/
 
         private string Reformatear_Fecha(DateTime fecha)
         {
             if (!fecha.Equals(DateTime.MinValue))
             {
                 if (rbDDMMYY.Checked)
-                    return string.Format("{0}-{1}-{2}", fecha.Day.ToString(), fecha.Month.ToString(), fecha.Year.ToString());
+                    return string.Format("{0}-{1}-{2}[{3}_{4}]", fecha.Day.ToString(), fecha.Month.ToString(), fecha.Year.ToString(), fecha.Hour.ToString(), fecha.Minute.ToString());
 
                 if (rbMMDDYY.Checked)
-                    return string.Format("{0}-{1}-{2}", fecha.Month.ToString(), fecha.Day.ToString(), fecha.Year.ToString());
+                    return string.Format("{0}-{1}-{2}[{3}_{4}]", fecha.Month.ToString(), fecha.Day.ToString(), fecha.Year.ToString(), fecha.Hour.ToString(), fecha.Minute.ToString());
 
                 if (rbMMYY.Checked)
-                    return string.Format("{0}-{1}", fecha.Month.ToString(), fecha.Year.ToString());
+                    return string.Format("{0}-{1}[{3}_{4}]", fecha.Month.ToString(), fecha.Year.ToString(), fecha.Hour.ToString(), fecha.Minute.ToString());
 
                 if (rbYY.Checked)
-                    return string.Format("{0}", fecha.Year.ToString());
+                    return string.Format("{0}[{3}_{4}]", fecha.Year.ToString(), fecha.Hour.ToString(), fecha.Minute.ToString());
 
                 if (rbYYMM.Checked)
-                    return string.Format("{0}-{1}", fecha.Year.ToString(), fecha.Month.ToString());
+                    return string.Format("{0}-{1}[{3}_{4}]", fecha.Year.ToString(), fecha.Month.ToString(), fecha.Hour.ToString(), fecha.Minute.ToString());
 
                 if (rbYYMMDD.Checked)
-                    return string.Format("{0}-{1}-{2}", fecha.Year.ToString(), fecha.Month.ToString(), fecha.Day.ToString());
+                    return string.Format("{0}-{1}-{2}[{3}_{4}]", fecha.Year.ToString(), fecha.Month.ToString(), fecha.Day.ToString(), fecha.Hour.ToString(), fecha.Minute.ToString());
             }
 
             return null;
@@ -156,6 +170,18 @@ namespace DateYourPhotos
             pbImagenCargada.Image = Image.FromFile(lvLog.SelectedItems[0].Tag.ToString());
         }
 
+        public bool IsImage(string pathArchivo)
+        {
+            return IMAGEEXTENSION.Contains(Path.GetExtension(pathArchivo));
+        }
 
+        public DateTime Obtener_Fecha(string fecha)
+        {
+            DateTime aux;
+            if(DateTime.TryParse(fecha, CultureInfo.CreateSpecificCulture("en-US"), DateTimeStyles.None, out aux))
+                return aux;
+
+            return DateTime.MinValue;
+        }
     }
 }
