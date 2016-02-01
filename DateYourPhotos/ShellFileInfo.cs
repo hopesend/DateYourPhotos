@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using Shell32;
 
 namespace DateYourPhotos
@@ -333,9 +333,9 @@ namespace DateYourPhotos
             }
         }
 
-        public Dictionary<string,object> GetFileDetails(string fileFolder, string filePath)
+        public Dictionary<string,string> GetFileDetails(string fileFolder, string filePath)
         {
-            Dictionary<string,object> arrHeaders = new Dictionary<string,object>();
+            Dictionary<string,string> arrHeaders = new Dictionary<string,string>();
 
             Shell shell = new Shell32.Shell();
             Folder fileshellfolder = shell.NameSpace(fileFolder);

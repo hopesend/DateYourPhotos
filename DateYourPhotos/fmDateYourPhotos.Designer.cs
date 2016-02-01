@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmDateYourPhotos));
             this.fbdDirectorio = new System.Windows.Forms.FolderBrowserDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btComenzar = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btAbrirMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,21 +40,32 @@
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pbImagenCargada = new System.Windows.Forms.PictureBox();
             this.lvLog = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbDDMMYY = new System.Windows.Forms.RadioButton();
-            this.rbMMDDYY = new System.Windows.Forms.RadioButton();
-            this.rbYYMMDD = new System.Windows.Forms.RadioButton();
-            this.rbMMYY = new System.Windows.Forms.RadioButton();
-            this.rbYYMM = new System.Windows.Forms.RadioButton();
             this.rbYY = new System.Windows.Forms.RadioButton();
-            this.btComenzar = new System.Windows.Forms.Button();
+            this.rbYYMM = new System.Windows.Forms.RadioButton();
+            this.rbMMYY = new System.Windows.Forms.RadioButton();
+            this.rbYYMMDD = new System.Windows.Forms.RadioButton();
+            this.rbMMDDYY = new System.Windows.Forms.RadioButton();
+            this.rbDDMMYY = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.lbDirectorio = new System.Windows.Forms.Label();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btFolder = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenCargada)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // btComenzar
+            // 
+            this.btComenzar.Image = ((System.Drawing.Image)(resources.GetObject("btComenzar.Image")));
+            this.btComenzar.Location = new System.Drawing.Point(589, 50);
+            this.btComenzar.Name = "btComenzar";
+            this.btComenzar.Size = new System.Drawing.Size(71, 71);
+            this.btComenzar.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.btComenzar, "Start Rename Files");
+            this.btComenzar.UseVisualStyleBackColor = true;
+            this.btComenzar.Click += new System.EventHandler(this.btComenzar_Click);
             // 
             // menuStrip1
             // 
@@ -72,27 +84,27 @@
             this.toolStripMenuItem1,
             this.salirToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.archivoToolStripMenuItem.Text = "Archivo";
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.archivoToolStripMenuItem.Text = "File";
             // 
             // btAbrirMenu
             // 
             this.btAbrirMenu.Name = "btAbrirMenu";
-            this.btAbrirMenu.Size = new System.Drawing.Size(155, 22);
-            this.btAbrirMenu.Text = "Abrir Directorio";
+            this.btAbrirMenu.Size = new System.Drawing.Size(152, 22);
+            this.btAbrirMenu.Text = "Select Folder";
             this.btAbrirMenu.ToolTipText = "Abrir Directorio Contenedor de Imagenes";
             this.btAbrirMenu.Click += new System.EventHandler(this.abrirDirectorioToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Text = "Exit";
             // 
             // pbImagenCargada
             // 
@@ -131,108 +143,109 @@
             this.groupBox1.Size = new System.Drawing.Size(571, 71);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Formato de Nombre";
+            this.groupBox1.Text = "Rename Format";
             // 
-            // rbDDMMYY
+            // rbYY
             // 
-            this.rbDDMMYY.AutoSize = true;
-            this.rbDDMMYY.Location = new System.Drawing.Point(6, 19);
-            this.rbDDMMYY.Name = "rbDDMMYY";
-            this.rbDDMMYY.Size = new System.Drawing.Size(79, 17);
-            this.rbDDMMYY.TabIndex = 0;
-            this.rbDDMMYY.TabStop = true;
-            this.rbDDMMYY.Text = "DD-MM-YY";
-            this.rbDDMMYY.UseVisualStyleBackColor = true;
+            this.rbYY.AutoSize = true;
+            this.rbYY.Location = new System.Drawing.Point(256, 42);
+            this.rbYY.Name = "rbYY";
+            this.rbYY.Size = new System.Drawing.Size(82, 17);
+            this.rbYY.TabIndex = 5;
+            this.rbYY.TabStop = true;
+            this.rbYY.Text = "YY[HH:MM]";
+            this.rbYY.UseVisualStyleBackColor = true;
+            // 
+            // rbYYMM
+            // 
+            this.rbYYMM.AutoSize = true;
+            this.rbYYMM.Location = new System.Drawing.Point(256, 19);
+            this.rbYYMM.Name = "rbYYMM";
+            this.rbYYMM.Size = new System.Drawing.Size(103, 17);
+            this.rbYYMM.TabIndex = 4;
+            this.rbYYMM.TabStop = true;
+            this.rbYYMM.Text = "YY-MM[HH:MM]";
+            this.rbYYMM.UseVisualStyleBackColor = true;
+            // 
+            // rbMMYY
+            // 
+            this.rbMMYY.AutoSize = true;
+            this.rbMMYY.Location = new System.Drawing.Point(129, 42);
+            this.rbMMYY.Name = "rbMMYY";
+            this.rbMMYY.Size = new System.Drawing.Size(103, 17);
+            this.rbMMYY.TabIndex = 3;
+            this.rbMMYY.TabStop = true;
+            this.rbMMYY.Text = "MM-YY[HH:MM]";
+            this.rbMMYY.UseVisualStyleBackColor = true;
+            // 
+            // rbYYMMDD
+            // 
+            this.rbYYMMDD.AutoSize = true;
+            this.rbYYMMDD.Location = new System.Drawing.Point(129, 19);
+            this.rbYYMMDD.Name = "rbYYMMDD";
+            this.rbYYMMDD.Size = new System.Drawing.Size(122, 17);
+            this.rbYYMMDD.TabIndex = 2;
+            this.rbYYMMDD.TabStop = true;
+            this.rbYYMMDD.Text = "YY-MM-DD[HH:MM]";
+            this.rbYYMMDD.UseVisualStyleBackColor = true;
             // 
             // rbMMDDYY
             // 
             this.rbMMDDYY.AutoSize = true;
             this.rbMMDDYY.Location = new System.Drawing.Point(6, 42);
             this.rbMMDDYY.Name = "rbMMDDYY";
-            this.rbMMDDYY.Size = new System.Drawing.Size(79, 17);
+            this.rbMMDDYY.Size = new System.Drawing.Size(122, 17);
             this.rbMMDDYY.TabIndex = 1;
             this.rbMMDDYY.TabStop = true;
-            this.rbMMDDYY.Text = "MM-DD-YY";
+            this.rbMMDDYY.Text = "MM-DD-YY[HH:MM]";
             this.rbMMDDYY.UseVisualStyleBackColor = true;
             // 
-            // rbYYMMDD
+            // rbDDMMYY
             // 
-            this.rbYYMMDD.AutoSize = true;
-            this.rbYYMMDD.Location = new System.Drawing.Point(91, 19);
-            this.rbYYMMDD.Name = "rbYYMMDD";
-            this.rbYYMMDD.Size = new System.Drawing.Size(79, 17);
-            this.rbYYMMDD.TabIndex = 2;
-            this.rbYYMMDD.TabStop = true;
-            this.rbYYMMDD.Text = "YY-MM-DD";
-            this.rbYYMMDD.UseVisualStyleBackColor = true;
-            // 
-            // rbMMYY
-            // 
-            this.rbMMYY.AutoSize = true;
-            this.rbMMYY.Location = new System.Drawing.Point(91, 42);
-            this.rbMMYY.Name = "rbMMYY";
-            this.rbMMYY.Size = new System.Drawing.Size(60, 17);
-            this.rbMMYY.TabIndex = 3;
-            this.rbMMYY.TabStop = true;
-            this.rbMMYY.Text = "MM-YY";
-            this.rbMMYY.UseVisualStyleBackColor = true;
-            // 
-            // rbYYMM
-            // 
-            this.rbYYMM.AutoSize = true;
-            this.rbYYMM.Location = new System.Drawing.Point(176, 19);
-            this.rbYYMM.Name = "rbYYMM";
-            this.rbYYMM.Size = new System.Drawing.Size(60, 17);
-            this.rbYYMM.TabIndex = 4;
-            this.rbYYMM.TabStop = true;
-            this.rbYYMM.Text = "YY-MM";
-            this.rbYYMM.UseVisualStyleBackColor = true;
-            // 
-            // rbYY
-            // 
-            this.rbYY.AutoSize = true;
-            this.rbYY.Location = new System.Drawing.Point(176, 42);
-            this.rbYY.Name = "rbYY";
-            this.rbYY.Size = new System.Drawing.Size(39, 17);
-            this.rbYY.TabIndex = 5;
-            this.rbYY.TabStop = true;
-            this.rbYY.Text = "YY";
-            this.rbYY.UseVisualStyleBackColor = true;
-            // 
-            // btComenzar
-            // 
-            this.btComenzar.Image = ((System.Drawing.Image)(resources.GetObject("btComenzar.Image")));
-            this.btComenzar.Location = new System.Drawing.Point(589, 50);
-            this.btComenzar.Name = "btComenzar";
-            this.btComenzar.Size = new System.Drawing.Size(71, 71);
-            this.btComenzar.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.btComenzar, "Comenzar Conversion");
-            this.btComenzar.UseVisualStyleBackColor = true;
-            this.btComenzar.Click += new System.EventHandler(this.btComenzar_Click);
+            this.rbDDMMYY.AutoSize = true;
+            this.rbDDMMYY.Location = new System.Drawing.Point(6, 19);
+            this.rbDDMMYY.Name = "rbDDMMYY";
+            this.rbDDMMYY.Size = new System.Drawing.Size(122, 17);
+            this.rbDDMMYY.TabIndex = 0;
+            this.rbDDMMYY.TabStop = true;
+            this.rbDDMMYY.Text = "DD-MM-YY[HH:MM]";
+            this.rbDDMMYY.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 28);
+            this.label1.Location = new System.Drawing.Point(42, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 8;
-            this.label1.Text = "Directorio:";
+            this.label1.Text = "Folder:";
             // 
             // lbDirectorio
             // 
             this.lbDirectorio.AutoSize = true;
-            this.lbDirectorio.Location = new System.Drawing.Point(76, 28);
+            this.lbDirectorio.Location = new System.Drawing.Point(103, 28);
             this.lbDirectorio.Name = "lbDirectorio";
             this.lbDirectorio.Size = new System.Drawing.Size(16, 13);
             this.lbDirectorio.TabIndex = 9;
             this.lbDirectorio.Text = "...";
+            // 
+            // btFolder
+            // 
+            this.btFolder.Image = ((System.Drawing.Image)(resources.GetObject("btFolder.Image")));
+            this.btFolder.Location = new System.Drawing.Point(12, 23);
+            this.btFolder.Name = "btFolder";
+            this.btFolder.Size = new System.Drawing.Size(25, 25);
+            this.btFolder.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.btFolder, "Select Folder");
+            this.btFolder.UseVisualStyleBackColor = true;
+            this.btFolder.Click += new System.EventHandler(this.abrirDirectorioToolStripMenuItem_Click);
             // 
             // fmDateYourPhotos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(672, 389);
+            this.Controls.Add(this.btFolder);
             this.Controls.Add(this.lbDirectorio);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btComenzar);
@@ -240,11 +253,12 @@
             this.Controls.Add(this.lvLog);
             this.Controls.Add(this.pbImagenCargada);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "fmDateYourPhotos";
-            this.Text = "Renombrar Imagenes";
+            this.Text = "Date Your Photos & Videos";
             this.Load += new System.EventHandler(this.fmDateYourPhotos_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -278,6 +292,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbDirectorio;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.Button btFolder;
     }
 }
 
