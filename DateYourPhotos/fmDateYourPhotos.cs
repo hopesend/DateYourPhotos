@@ -37,8 +37,6 @@ namespace DateYourPhotos
                     nuevoItem.Text = Path.GetFileName(archivo);
                     nuevoItem.Tag = archivo;
                     lvLog.Items.Add(nuevoItem);
-                    lvLog.Refresh();
-                    lvLog.Items[lvLog.Items.Count - 1].EnsureVisible();
                 }
             }
         }
@@ -51,61 +49,30 @@ namespace DateYourPhotos
 
         private void Renombrar_Imagenes(string pathImagenes)
         {
-            string extensiones = IMAGEEXTENSION + "," + VIDEOEXTENSION;
-            foreach (string archivo in Directory.GetFiles(pathImagenes, "*.*", SearchOption.AllDirectories).Where(s => extensiones.Contains(Path.GetExtension(s).ToLower())))
+            foreach (ListViewItem item in lvLog.Items)
             {
-                ListViewItem nuevoItem = new ListViewItem();
-                string extension = Path.GetExtension(archivo);
-                string fechaCaptura = new ShellFileInfo().GetFileDetails(Path.GetDirectoryName(archivo), Path.GetFileName(archivo), ShellFileInfo.infoFile.Fecha_de_captura);
+                string extension = Path.GetExtension(item.Tag.ToString());
+                string fechaCaptura = new ShellFileInfo().GetFileDetails(Path.GetDirectoryName(item.Tag.ToString()), Path.GetFileName(item.Tag.ToString()), ShellFileInfo.infoFile.Fecha_de_captura);
+                if(fechaCaptura.Equals(string.Empty))
+                    fechaCaptura = new ShellFileInfo().GetFileDetails(Path.GetDirectoryName(item.Tag.ToString()), Path.GetFileName(item.Tag.ToString()), ShellFileInfo.infoFile.Fecha_de_modificacion);
                 string nuevaFecha = Reformatear_Fecha(Obtener_Fecha(fechaCaptura)) + extension;
-                //string nuevaFecha = Reformatear_Fecha(Obtener_Fecha(archivo)) + extension;
 
                 if (Path.GetFileNameWithoutExtension(nuevaFecha).Equals(string.Empty))
-                    nuevaFecha = Path.GetFileNameWithoutExtension(archivo) + "(NoShotDate)" + extension;
+                    nuevaFecha = Path.GetFileNameWithoutExtension(item.Tag.ToString()) + "(NoShotDate)" + extension;
                 else
                 {
-                    if (File.Exists(Path.Combine(Path.GetDirectoryName(archivo), nuevaFecha)))
-                        nuevaFecha = Devolver_Nuevo_Nombre(Path.Combine(Path.GetDirectoryName(archivo), nuevaFecha));
+                    if (File.Exists(Path.Combine(Path.GetDirectoryName(item.Tag.ToString()), nuevaFecha)))
+                        nuevaFecha = Devolver_Nuevo_Nombre(Path.Combine(Path.GetDirectoryName(item.Tag.ToString()), nuevaFecha));
                 }
 
-                nuevoItem.Text = Path.GetFileName(archivo) + " >> " + nuevaFecha;
-                nuevoItem.Tag = Path.Combine(Path.GetDirectoryName(archivo), nuevaFecha);
-                File.Move(archivo, nuevoItem.Tag.ToString());
-
-                lvLog.Items.Add(nuevoItem);
-                lvLog.Refresh();
+                item.Text = item.Text + " >> " + nuevaFecha;
+                string nuevoPath = Path.Combine(Path.GetDirectoryName(item.Tag.ToString()), nuevaFecha);
+                File.Move(item.Tag.ToString(), nuevoPath);
+                item.Tag = nuevoPath;
+                
                 lvLog.Items[lvLog.Items.Count - 1].EnsureVisible();
             }
         }
-
-        /*private DateTime Obtener_Fecha(string pathImagen)
-        {
-            Regex r = new Regex(":");
-            Image imagenAux = null;
-         
-            try
-            {
-                string dateTaken = null;
-                imagenAux = Image.FromFile(pathImagen);
-                if (IsImage(pathImagen))
-                {
-                    PropertyItem propiedadFechaCaptura = imagenAux.GetPropertyItem(36867);
-                    dateTaken = r.Replace(Encoding.UTF8.GetString(propiedadFechaCaptura.Value), "-", 2);
-                }
-                else
-                {
-
-                }
-                imagenAux.Dispose();
-                return DateTime.Parse(dateTaken);
-            }
-            catch
-            {
-                if(imagenAux != null)
-                    imagenAux.Dispose();
-                return DateTime.MinValue;
-            }
-        }*/
 
         private string Reformatear_Fecha(DateTime fecha)
         {
@@ -153,10 +120,10 @@ namespace DateYourPhotos
                 if(File.Exists(aux))
                 {
                     cont++;
-                    if(nombreArchivo.Contains('_'))
+                    if(nombreArchivo.Contains("]_"))
                     {
-                        nombreArchivo = nombreArchivo.Remove(nombreArchivo.IndexOf('_'));
-                        nombreArchivo = nombreArchivo + "_" + cont;
+                        nombreArchivo = nombreArchivo.Remove(nombreArchivo.IndexOf("]_"));
+                        nombreArchivo = nombreArchivo + "]_" + cont;
                         aux = Path.Combine(ruta, nombreArchivo + extension);
                     }
                     else
@@ -180,10 +147,16 @@ namespace DateYourPhotos
         private void lvLog_ItemActivate(object sender, EventArgs e)
         {
             if (IsImage(lvLog.SelectedItems[0].Tag.ToString()))
+            {
+                pbImagenCargada.Visible = true;
+                axWindowsMediaPlayer1.Visible = false;
                 pbImagenCargada.Image = Image.FromFile(lvLog.SelectedItems[0].Tag.ToString());
+            }
             else
             {
-                //Mostrar video
+                pbImagenCargada.Visible = false;
+                axWindowsMediaPlayer1.Visible = true;
+                axWindowsMediaPlayer1.URL = lvLog.SelectedItems[0].Tag.ToString();
             }
         }
 

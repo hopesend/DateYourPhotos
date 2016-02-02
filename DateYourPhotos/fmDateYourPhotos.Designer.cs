@@ -33,6 +33,7 @@
             this.fbdDirectorio = new System.Windows.Forms.FolderBrowserDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btComenzar = new System.Windows.Forms.Button();
+            this.btFolder = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btAbrirMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,10 +51,11 @@
             this.rbDDMMYY = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.lbDirectorio = new System.Windows.Forms.Label();
-            this.btFolder = new System.Windows.Forms.Button();
+            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenCargada)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
             // btComenzar
@@ -66,6 +68,17 @@
             this.toolTip1.SetToolTip(this.btComenzar, "Start Rename Files");
             this.btComenzar.UseVisualStyleBackColor = true;
             this.btComenzar.Click += new System.EventHandler(this.btComenzar_Click);
+            // 
+            // btFolder
+            // 
+            this.btFolder.Image = ((System.Drawing.Image)(resources.GetObject("btFolder.Image")));
+            this.btFolder.Location = new System.Drawing.Point(12, 23);
+            this.btFolder.Name = "btFolder";
+            this.btFolder.Size = new System.Drawing.Size(25, 25);
+            this.btFolder.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.btFolder, "Select Folder");
+            this.btFolder.UseVisualStyleBackColor = true;
+            this.btFolder.Click += new System.EventHandler(this.abrirDirectorioToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
@@ -90,7 +103,7 @@
             // btAbrirMenu
             // 
             this.btAbrirMenu.Name = "btAbrirMenu";
-            this.btAbrirMenu.Size = new System.Drawing.Size(152, 22);
+            this.btAbrirMenu.Size = new System.Drawing.Size(141, 22);
             this.btAbrirMenu.Text = "Select Folder";
             this.btAbrirMenu.ToolTipText = "Abrir Directorio Contenedor de Imagenes";
             this.btAbrirMenu.Click += new System.EventHandler(this.abrirDirectorioToolStripMenuItem_Click);
@@ -98,12 +111,12 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(138, 6);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.salirToolStripMenuItem.Text = "Exit";
             // 
             // pbImagenCargada
@@ -229,22 +242,22 @@
             this.lbDirectorio.TabIndex = 9;
             this.lbDirectorio.Text = "...";
             // 
-            // btFolder
+            // axWindowsMediaPlayer1
             // 
-            this.btFolder.Image = ((System.Drawing.Image)(resources.GetObject("btFolder.Image")));
-            this.btFolder.Location = new System.Drawing.Point(12, 23);
-            this.btFolder.Name = "btFolder";
-            this.btFolder.Size = new System.Drawing.Size(25, 25);
-            this.btFolder.TabIndex = 10;
-            this.toolTip1.SetToolTip(this.btFolder, "Select Folder");
-            this.btFolder.UseVisualStyleBackColor = true;
-            this.btFolder.Click += new System.EventHandler(this.abrirDirectorioToolStripMenuItem_Click);
+            this.axWindowsMediaPlayer1.Enabled = true;
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(12, 127);
+            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
+            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(250, 250);
+            this.axWindowsMediaPlayer1.TabIndex = 11;
+            this.axWindowsMediaPlayer1.Visible = false;
             // 
             // fmDateYourPhotos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(672, 389);
+            this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.btFolder);
             this.Controls.Add(this.lbDirectorio);
             this.Controls.Add(this.label1);
@@ -265,6 +278,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenCargada)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -293,6 +307,7 @@
         private System.Windows.Forms.Label lbDirectorio;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.Button btFolder;
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
     }
 }
 

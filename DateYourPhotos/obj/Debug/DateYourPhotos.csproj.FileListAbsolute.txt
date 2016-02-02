@@ -16,3 +16,9 @@ C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourP
 C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\DateYourPhotos\obj\Debug\DateYourPhotos.csproj.GenerateResource.Cache
 C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\obj\Debug\Interop.Shell32.dll
 C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\obj\Debug\DateYourPhotos.csproj.ResolveComReference.cache
+C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\DateYourPhotos\obj\Debug\Interop.Shell32.dll
+C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\DateYourPhotos\obj\Debug\DateYourPhotos.csproj.ResolveComReference.cache
+C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\DateYourPhotos\bin\Debug\Interop.WMPLib.dll
+C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\DateYourPhotos\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\DateYourPhotos\obj\Debug\Interop.WMPLib.dll
+C:\Users\Hopesend\Documents\Visual Studio 2013\Projects\DateYourPhotos\DateYourPhotos\DateYourPhotos\obj\Debug\AxInterop.WMPLib.dll
